@@ -1,0 +1,54 @@
+<!-- welcome.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Panels</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script type="text/javascript" src="h-include.js"></script>
+  </head>
+  <body>
+    <div class="dashboard">
+      <h1>Panels demo</h1>
+      <p class="amount">Panels loaded with h-include:<span id="amount"></span></p>
+    </div>
+    <div id="scrollArea">
+      <div class="panels">
+      </div>
+    <div id="target"></div>
+  </body>
+  <script>
+    var loaded = 0;
+    function handler(entries, observer) {
+      for (entry of entries) {
+        if (entry.isIntersecting) {
+          const base = document.getElementsByClassName('panels')[0]
+          const panel = document.createElement('h-include')
+          panel.setAttribute('src', 'http://localhost:4000/panel')
+          base.appendChild(panel)
+          loaded +=1 ;
+          document.getElementById('amount').innerText = ' ' + loaded;
+        } 
+      }
+      enhanceDOM()
+    }
+
+    function enhanceDOM() {
+      const liTags = document.getElementsByTagName("li");
+      for (let i = 0; i < liTags.length; i++) {
+        const li = liTags[i];
+        li.addEventListener("click", () => {
+          console.log("click li", i);
+        });
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", function(event) {
+      let observer = new IntersectionObserver(handler);
+      observer.observe(document.getElementById("target"));            
+    });
+  </script>
+</html>
