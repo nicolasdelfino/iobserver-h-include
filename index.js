@@ -16,10 +16,10 @@ app.get('/', (req, res) => {
 })
 
 app.get('/panel', (req, res) => {
-    const panel = getPanel()
-    res.render('panel.html', {locals: {panel: panel}});
+    setTimeout(() => {
+        const panel = [...Array(5).keys()].map((v, i) => ({id: i, name: `item_${i}`}))
+        res.render('panel.html', {locals: {panel: panel}});
+    }, 200);
 })
-
-const getPanel = () => [...Array(5).keys()].map((v, i) => ({id: i, name: `item_${i}`}))
 
 app.listen(PORT, () => console.log(`App listening on http://localhost:${PORT}`))

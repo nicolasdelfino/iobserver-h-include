@@ -8,7 +8,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Panels</title>
     <link rel="stylesheet" href="css/styles.css" />
-    <script type="text/javascript" src="h-include.js"></script>
+    <script type="text/javascript" src="js/h-include.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
   </head>
   <body>
     <div class="dashboard">
@@ -20,35 +21,4 @@
       </div>
     <div id="target"></div>
   </body>
-  <script>
-    var loaded = 0;
-    function handler(entries, observer) {
-      for (entry of entries) {
-        if (entry.isIntersecting) {
-          const base = document.getElementsByClassName('panels')[0]
-          const panel = document.createElement('h-include')
-          panel.setAttribute('src', 'http://localhost:4000/panel')
-          base.appendChild(panel)
-          loaded +=1 ;
-          document.getElementById('amount').innerText = ' ' + loaded;
-        } 
-      }
-      enhanceDOM()
-    }
-
-    function enhanceDOM() {
-      const liTags = document.getElementsByTagName("li");
-      for (let i = 0; i < liTags.length; i++) {
-        const li = liTags[i];
-        li.addEventListener("click", () => {
-          console.log("click li", i);
-        });
-      }
-    }
-
-    document.addEventListener("DOMContentLoaded", function(event) {
-      let observer = new IntersectionObserver(handler);
-      observer.observe(document.getElementById("target"));            
-    });
-  </script>
 </html>
