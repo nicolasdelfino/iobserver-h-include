@@ -20,17 +20,6 @@ function handler(entries, observer) {
       document.getElementById("amount").innerText = " " + loaded;
     }
   }
-  enhanceDOM();
-}
-
-function enhanceDOM() {
-  const liTags = document.getElementsByTagName("li");
-  for (let i = 0; i < liTags.length; i++) {
-    const li = liTags[i];
-    li.addEventListener("click", () => {
-      console.log("click li", i);
-    });
-  }
 }
 
 document.addEventListener("DOMContentLoaded", function(event) {
