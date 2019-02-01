@@ -1,4 +1,4 @@
-# h-include / intersectionObserver demo
+# h-include / intersectionObserver node demo
 
 Request content from server on 'in-view' scroll interaction. <br />
-Uses Gustaf Nilsson Kottes library h-include and the intersection observer api.
+Uses Gustaf Nilsson Kotte's [h-include](https://github.com/gustafnk/h-include) library and the intersection observer api.
