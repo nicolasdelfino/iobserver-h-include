@@ -3,6 +3,8 @@ function handler(entries, observer) {
   for (entry of entries) {
     if (entry.isIntersecting) {
       const base = document.getElementsByClassName("panels")[0];
+      
+      // create h-include custom element
       const panel = document.createElement("h-include");
 
       const loadingWrapper = document.createElement("div");

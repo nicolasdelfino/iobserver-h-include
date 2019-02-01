@@ -13,7 +13,7 @@
     "compression": "^1.7.3",
     "express": "^4.16.4",
     "express-es6-template-engine": "^2.1.7",
-    "h-include": "^2.1.0"
+    "h-include": "^3.0.0"
   },
   "devDependencies": {
     "nodemon": "^1.18.9"
